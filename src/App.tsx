@@ -41,10 +41,11 @@ class ErrorBoundary extends Component<{ children: React.ReactNode }, { hasError:
 
 export default function App() {
   const [isDebug] = useState(() => new URLSearchParams(window.location.search).has('debug'));
+  const basename = import.meta.env.BASE_URL;
 
   return (
     <ErrorBoundary>
-      <Router>
+      <Router basename={basename}>
         <div className={`min-h-screen bg-gray-50 ${isDebug ? 'debug' : ''}`}>
           <TopNav />
           <div className="pt-16">
